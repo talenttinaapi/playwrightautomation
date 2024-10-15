@@ -1,30 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { login } from '../../support/setCookies';
+const { test, expect } =require ('@playwright/test')
 
-let sharedContext;
-let page;
+test('Home Page', async ({ page }) => {
+  await page.goto('https://www.demoblaze.com/index.html');
 
-test.beforeAll(async ({ browser }) => {
-    console.log('Running beforeAll hook');
-    sharedContext = await login(browser);
-    page = await sharedContext.newPage();
-});
+  const pageTitle=page.title();
+    console.log('Page title is:', pageTitle);
 
-test.beforeEach(async () => {
-    console.log('Running beforeEach hook');
-    await page.goto('/app/internal/admin/configuration_defaults');
-});
+    await expect(page).toHaveTitle('STORE');
 
-test('Page header loads', async () => {
-    console.log('Running test: Page header loads');
-    await expect(
-        page.getByRole('heading', { name: 'Configuration defaults' })
-    ).toBeVisible();
-});
+    await expect(page).toHaveURL('https://www.demoblaze.com/index.html');
 
-test('Edit collection', async () => {
-    console.log('Running test: Edit collection');
-    await page.getByTestId('basic-search-name_cont').fill('United States');
-    await page.getByRole('cell', { name: 'Edit' }).first().click();
-    await expect(page.getByText('Key messages', { exact: true })).toBeVisible();
-});
+    await page.close();
+})
