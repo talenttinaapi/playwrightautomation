@@ -1,0 +1,16 @@
+{
+  "name": "playwrightautomation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/talenttinaapi/playwrightautomation.git",
+  "author": "talent tinaapi <ttinaapi88@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5"
+  },
+  "scripts": {}
+}
