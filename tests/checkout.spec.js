@@ -12,3 +12,9 @@ test('Home Page', async ({ page }) => {
 
     await page.close();
 })
+
+test('locators', async ({ page }) => {
+
+    await page.goto('https://www.demoblaze.com/index.html');
+
+});
